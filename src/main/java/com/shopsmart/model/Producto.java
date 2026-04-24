@@ -1,5 +1,5 @@
 
-package com.shopsmar.model;
+package com.shopsmart.model;
 
 public class Producto {
     private int id;

@@ -1,5 +1,5 @@
 
-package com.shopsmar.model;
+package com.shopsmart.model;
 
 import java.io.IOException;
 import java.util.Scanner;
