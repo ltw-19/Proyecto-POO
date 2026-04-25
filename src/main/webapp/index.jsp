@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopSmart AI | Tienda Inteligente</title>
@@ -77,4 +78,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
