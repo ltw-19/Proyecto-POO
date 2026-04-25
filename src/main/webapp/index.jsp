@@ -42,6 +42,7 @@
         <div class="container">
             <h1 class="display-4 fw-bold">Tu compra, asistida por IA</h1>
             <p class="lead">Encuentra exactamente lo que necesitas en segundos.</p>
+            <a href="tienda" class="btn btn-light btn-lg text-primary mt-3 fw-bold">Ver Catálogo de Productos</a>
         </div>
     </header>
 
