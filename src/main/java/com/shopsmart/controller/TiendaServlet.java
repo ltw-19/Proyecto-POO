@@ -17,10 +17,16 @@ public class TiendaServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        // Llenamos el inventario con datos de prueba al iniciar el servidor
-        inventario.agregarProducto(new Producto(1, "Franela Microdurazno", 15.0, 10));
-        inventario.agregarProducto(new Producto(2, "Laptop Gamer", 850.0, 5));
-        inventario.agregarProducto(new Producto(3, "Audífonos Bluetooth", 25.0, 15));
+        inventario.agregarProducto(new Producto(1, "Celular Samsung Galaxy S24", 999.0, 7));
+        inventario.agregarProducto(new Producto(2, "Apple iPhone 15", 1099.0, 3));
+        inventario.agregarProducto(new Producto(3, "Audífonos Bluetooth JBL Tune 510BT", 49.0, 15));
+        inventario.agregarProducto(new Producto(4, "Laptop Asus VivoBook 15", 460.0, 5));
+        inventario.agregarProducto(new Producto(5, "Tablet Lenovo Tab M10", 189.0, 8));
+        inventario.agregarProducto(new Producto(6, "Smartwatch Xiaomi Mi Band 7", 64.0, 20));
+        inventario.agregarProducto(new Producto(7, "Parlante Portátil Logitech", 59.0, 10));
+        inventario.agregarProducto(new Producto(8, "Cargador Rápido 20W USB-C", 19.0, 30));
+        inventario.agregarProducto(new Producto(9, "Disco SSD Kingston 1TB", 75.0, 12));
+        inventario.agregarProducto(new Producto(10, "Mouse Inalámbrico Logitech M280", 28.0, 22));
     }
 
     // Método para MOSTRAR la tienda (GET)
