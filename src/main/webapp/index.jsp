@@ -60,7 +60,7 @@
     <div class="deals-list">
       <%-- Ejemplo de producto en oferta --%>
       <div class="deal-card">
-        <img src="img/prod-galaxy23.png" alt="Galaxy S24 Ultra"/>
+        <img src="img/productos/prod_galaxy_s24.jpg" alt="Galaxy S24 Ultra"/>
         <div class="deal-info">
           <span class="badge offer">🔥 En descuento</span>
           <h3>Galaxy S24 Ultra</h3>
