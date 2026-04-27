@@ -47,7 +47,6 @@
         </select>
       </div>
       <div class="products">
-        <%-- Tarjeta de producto --%>
         <!-- Producto 1: Galaxy S24 -->
         <div class="product-card">
           <img src="img/productos/prod_galaxy_s24.jpg" alt="Galaxy S24 Ultra"/>
