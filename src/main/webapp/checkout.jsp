@@ -1,6 +1,5 @@
 <!-- Archivo no necesario para fase 1-->
 <!--
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +8,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <link rel="stylesheet" href="css/styles.css">
 </head>
-<%@include file="fragmento_chatbot.jsp" %>
 <body>
     <header class="topbar">
         <span class="logo">MacDigital</span>
@@ -20,14 +18,14 @@
         </div>
     </header>
     <main class="checkout-main">
-        <a href="catalogo.jsp" class="back-link">&lt; Volver al catÃ¡logo</a>
+        <a href="catalogo.jsp" class="back-link">&lt; Volver al catálogo</a>
         <h2>Finalizar Compra</h2>
         <div class="checkout-flex">
             <section class="checkout-card shipping">
-                <h3>Datos de EnvÃ­o</h3>
-                <input type="text" placeholder="Ej. Juan PÃ©rez"/>
+                <h3>Datos de Envío</h3>
+                <input type="text" placeholder="Ej. Juan Pérez"/>
                 <input type="text" placeholder="Ej. 55 1234 5678"/>
-                <input type="text" placeholder="Calle, NÃºmero, Colonia" style="width: 100%;"/>
+                <input type="text" placeholder="Calle, Número, Colonia" style="width: 100%;"/>
             </section>
             <section class="checkout-card order-summary">
                 <h3>Resumen de Compra</h3>
@@ -40,15 +38,15 @@
                 </div>
                 <div class="os-totals">
                     <div>Subtotal: <span>$149.00</span></div>
-                    <div>EnvÃ­o: <span class="green">Gratis</span></div>
+                    <div>Envío: <span class="green">Gratis</span></div>
                     <div class="total">Total: <span>$149.00</span></div>
                 </div>
                 <button class="btn-product big">Pagar y confirmar</button>
-                <div class="safe-pay">âœ” Pago seguro</div>
+                <div class="safe-pay">? Pago seguro</div>
             </section>
         </div>
         <section class="checkout-card payment">
-            <h3>ðŸªª MÃ©todo de Pago</h3>
+            <h3>? Método de Pago</h3>
             <input type="text" placeholder="0000 0000 0000 0000" maxlength="19"/>
             <input type="text" placeholder="MM/AA" maxlength="5"/>
             <input type="text" placeholder="123" maxlength="3"/>

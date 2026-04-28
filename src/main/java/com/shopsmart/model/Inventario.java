@@ -1,4 +1,3 @@
-
 package com.shopsmart.model;
 
 import java.util.ArrayList;

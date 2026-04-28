@@ -5,7 +5,7 @@ public class Producto {
     private String nombre;
     private double precio;
     private int stock;
-    private String imagen; // nuevo campo para la ruta de imagen
+    private String imagen;
 
     public Producto(int id, String nombre, double precio, int stock, String imagen) {
         this.id = id;
@@ -14,7 +14,7 @@ public class Producto {
         this.stock = stock;
         this.imagen = imagen;
     }
-    // getters y setters (todos)
+
     public int getId() { return id; }
     public String getNombre() { return nombre; }
     public double getPrecio() { return precio; }

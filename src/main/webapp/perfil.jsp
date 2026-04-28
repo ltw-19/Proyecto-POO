@@ -1,6 +1,5 @@
 <!-- Archivo no necesario para fase 1-->
 <!--
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +8,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <link rel="stylesheet" href="css/styles.css">
 </head>
-<%@include file="fragmento_chatbot.jsp" %>
 <body>
     <header class="topbar">
         <span class="logo">MacDigital</span>
@@ -29,8 +27,8 @@
             </div>
             <nav class="profile-nav">
                 <a class="active">Mis Pedidos</a>
-                <a>ConfiguraciÃ³n</a>
-                <a class="logout">Cerrar sesiÃ³n</a>
+                <a>Configuración</a>
+                <a class="logout">Cerrar sesión</a>
             </nav>
         </aside>
         <section class="orders-main">

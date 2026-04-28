@@ -1,26 +1,29 @@
-<%@page import="com.shopsmart.model.Producto, java.util.List"%>
+<%@page import="com.shopsmart.model.Producto, com.shopsmart.model.Inventario, java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>MacDigital | Tecnología inteligente</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <%@include file="fragmento_chatbot.jsp" %>
+    
     <header class="topbar">
-        <span class="logo">MacDigital</span>
+        <div class="logo">MacDigital</div>
         <input type="text" class="searchbar" placeholder="Buscar productos...">
         <div class="icon-group">
-            <img src="img/iconos/perfil_usuario.png" alt="Perfil" class="icon">
+            <span class="login-link">Iniciar sesión / Registro</span>
             <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
         </div>
     </header>
 
     <section class="banner">
         <h1 class="banner-title">Compra inteligente con IA</h1>
+        <p class="banner-desc">Encuentra exactamente lo que necesitas. Nuestro asistente de IA filtrará nuestro catálogo por ti.</p>
         <a href="catalogo" class="btn-main">Explorar productos</a>
     </section>
 
@@ -32,20 +35,42 @@
         <div class="products-list">
             <%
                 List<Producto> destacados = (List<Producto>) request.getAttribute("destacados");
-                if (destacados != null) {
+                if (destacados == null || destacados.isEmpty()) {
+                    // Usamos una variable local sin conflictos
+                    Inventario inventarioTemp = (Inventario) application.getAttribute("inventario");
+                    if (inventarioTemp != null && inventarioTemp.getProductos() != null) {
+                        int total = inventarioTemp.getProductos().size();
+                        int limit = Math.min(4, total);
+                        destacados = inventarioTemp.getProductos().subList(0, limit);
+                    }
+                }
+                if (destacados != null && !destacados.isEmpty()) {
                     for (Producto p : destacados) {
             %>
             <div class="product-card">
                 <img src="img/productos/<%= p.getImagen() %>" alt="<%= p.getNombre() %>">
                 <h3 class="prod-name"><%= p.getNombre() %></h3>
-                <div class="prod-price">$<%= p.getPrecio() %></div>
-                <a href="detalle?id=<%= p.getId() %>" class="btn-product">Ver detalle</a>
+                <div class="prod-price">
+                    $<%= p.getPrecio() %>
+                    <% if(p.getId() == 2 || p.getId() == 4) { %>
+                        <span class="old-price">$<%= (int)(p.getPrecio() * 1.12) %></span>
+                    <% } %>
+                </div>
+                <button class="btn-product" onclick="mostrarMensaje()">Agregar al carrito</button>
             </div>
             <%
                     }
-                }
+                } else {
             %>
+            <p>No hay productos disponibles. <a href="catalogo">Ir al catálogo</a></p>
+            <% } %>
         </div>
     </main>
+
+    <script>
+        function mostrarMensaje() {
+            alert("Funcionalidad en desarrollo. Pronto podrás comprar.");
+        }
+    </script>
 </body>
 </html>

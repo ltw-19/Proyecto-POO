@@ -1,32 +1,62 @@
-// Temporizador de oferta relámpago (simulado)
-document.addEventListener("DOMContentLoaded", () => {
-  const timerEl = document.getElementById("timer");
-  if (timerEl) {
-    let h = 1, m = 12, s = 48;
-    setInterval(() => {
-      s--;
-      if (s < 0) { s = 59; m--; }
-      if (m < 0) { m = 59; h--; }
-      timerEl.textContent =
-        (h < 10 ? "0" : "") + h + ":" +
-        (m < 10 ? "0" : "") + m + ":" +
-        (s < 10 ? "0" : "") + s;
-    }, 1000);
-  }
-  // Chatbot input simulado
-  const chatInput = document.querySelector('.chatbot-input-row input');
-  const chatbotBody = document.querySelector('.chatbot-body');
-  if (chatInput && chatbotBody) {
-    document.querySelector('.chatbot-input-row button').onclick = () => {
-      const msg = chatInput.value.trim();
-      if(msg){
-        chatbotBody.innerHTML += `<div class="user-msg">${msg}</div>`;
-        chatInput.value = "";
-        setTimeout(()=>{
-         chatbotBody.innerHTML += `<div class="bot-message">¡Gracias por tu mensaje! Pronto tendremos respuesta AI real 🚀</div>`;
-         chatbotBody.scrollTop = chatbotBody.scrollHeight;
-       }, 800);
-      }
-    };
-  }
+document.addEventListener('DOMContentLoaded', function() {
+    const aplicarBtn = document.getElementById('aplicarFiltros');
+    if (!aplicarBtn) return; // No estamos en catálogo
+
+    const precioSlider = document.getElementById('precioMax');
+    const precioMostrar = document.getElementById('precioMostrar');
+    const ordenarSelect = document.getElementById('ordenar');
+    const contadorSpan = document.getElementById('contadorProductos');
+
+    function filtrarProductos() {
+        const categoriasSeleccionadas = Array.from(document.querySelectorAll('.filtro-categoria:checked')).map(cb => cb.value);
+        const marcasSeleccionadas = Array.from(document.querySelectorAll('.filtro-marca:checked')).map(cb => cb.value);
+        const precioMaximo = parseFloat(precioSlider.value);
+        const orden = ordenarSelect.value;
+
+        let productos = Array.from(document.querySelectorAll('#listaProductos .product-card'));
+        let visibles = [];
+
+        productos.forEach(producto => {
+            const precio = parseFloat(producto.dataset.precio);
+            const categoria = producto.dataset.categoria;
+            const marca = producto.dataset.marca;
+
+            let cumpleCategoria = (categoriasSeleccionadas.length === 0) || categoriasSeleccionadas.includes(categoria);
+            let cumpleMarca = (marcasSeleccionadas.length === 0) || marcasSeleccionadas.includes(marca);
+            let cumplePrecio = precio <= precioMaximo;
+
+            if (cumpleCategoria && cumpleMarca && cumplePrecio) {
+                producto.style.display = 'flex';
+                visibles.push(producto);
+            } else {
+                producto.style.display = 'none';
+            }
+        });
+
+        // Ordenar
+        if (orden === 'menorPrecio') {
+            visibles.sort((a,b) => parseFloat(a.dataset.precio) - parseFloat(b.dataset.precio));
+        } else if (orden === 'mayorPrecio') {
+            visibles.sort((a,b) => parseFloat(b.dataset.precio) - parseFloat(a.dataset.precio));
+        } else {
+            visibles.sort((a,b) => a.dataset.nombre.localeCompare(b.dataset.nombre));
+        }
+
+        const contenedor = document.getElementById('listaProductos');
+        visibles.forEach(prod => contenedor.appendChild(prod));
+        contadorSpan.innerText = visibles.length;
+    }
+
+    precioSlider.addEventListener('input', function() {
+        precioMostrar.innerText = this.value;
+        filtrarProductos();
+    });
+    aplicarBtn.addEventListener('click', filtrarProductos);
+    ordenarSelect.addEventListener('change', filtrarProductos);
+
+    document.querySelectorAll('.filtro-categoria, .filtro-marca').forEach(cb => {
+        cb.addEventListener('change', filtrarProductos);
+    });
+
+    filtrarProductos();
 });

@@ -9,32 +9,65 @@
 </head>
 <body>
     <%@include file="fragmento_chatbot.jsp" %>
-    <header class="topbar">...</header>
-    <main class="detalle-producto">
+    
+    <header class="topbar">
+        <div class="logo">MacDigital</div>
+        <input type="text" class="searchbar" placeholder="Buscar productos...">
+        <div class="icon-group">
+            <span class="login-link">Iniciar sesión / Registro</span>
+            <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
+        </div>
+    </header>
+
+    <main class="detalle-moderno">
         <a href="catalogo" class="back-link">&lt; Volver al catálogo</a>
         <%
             Producto p = (Producto) request.getAttribute("producto");
             if (p != null) {
         %>
-        <div class="detalle-flex">
-            <img src="img/productos/<%= p.getImagen() %>" alt="<%= p.getNombre() %>" class="detalle-img">
-            <section class="detalle-info">
+        <div class="detalle-grid">
+            <div class="detalle-imagen">
+                <img src="img/productos/<%= p.getImagen() %>" alt="<%= p.getNombre() %>">
+            </div>
+            <div class="detalle-info">
                 <h1><%= p.getNombre() %></h1>
-                <div class="prod-price-detalle">$<%= p.getPrecio() %></div>
-                <div class="detalle-descrip">
-                    Producto de alta calidad, ideal para tu día a día. Consulta disponibilidad.
+                <div class="detalle-precio">$<%= p.getPrecio() %></div>
+                <div class="detalle-rating">
+                    ★★★★☆ <span>(128 reseñas)</span>
                 </div>
-                <button class="btn-product big" onclick="alert('Funcionalidad en desarrollo. Pronto podrás comprar.')">Comprar ahora</button>
-            </section>
+                <div class="detalle-descripcion">
+                    <%= p.getNombre() %> con tecnología de punta. 
+                    Auriculares inalámbricos con cancelación de ruido activa, batería de 30 horas de duración y sonido de alta fidelidad. Perfectos para el trabajo, viajes o el gimnasio. Diseño ergonómico y ligero.
+                </div>
+                <div class="detalle-disponibilidad">
+                    ✅ Disponible en inventario
+                </div>
+                <button class="btn-comprar-ahora" onclick="mostrarMensaje()">Agregar al carrito</button>
+            </div>
         </div>
+
         <div class="detalle-resenas">
-            <h3>Opiniones y Reseñas</h3>
-            <div class="resena"><b>Alejandro M.</b> ⭐⭐⭐⭐⭐<br/>"Excelente producto, muy recomendado."</div>
-            <div class="resena"><b>Sofía R.</b> ⭐⭐⭐⭐⭐<br/>"La calidad es increíble."</div>
+            <h3>Opiniones de clientes</h3>
+            <div class="resena">
+                <div class="resena-usuario">Juan P. <span class="resena-fecha">Hace 2 días</span></div>
+                <div class="resena-estrellas">★★★★★</div>
+                <div class="resena-texto">Excelente calidad de sonido. El sonido es increíble y la batería me dura toda la semana en la oficina. Muy recomendados.</div>
+            </div>
+            <div class="resena">
+                <div class="resena-usuario">María G. <span class="resena-fecha">Hace 1 semana</span></div>
+                <div class="resena-estrellas">★★★★☆</div>
+                <div class="resena-texto">Muy buenos, pero ajustados. Cancelan el ruido perfectamente, aunque al principio aprietan un poco. En general una gran compra.</div>
+            </div>
         </div>
         <% } else { %>
             <p>Producto no encontrado.</p>
         <% } %>
     </main>
+
+    <script>
+        function mostrarMensaje() {
+            alert("Funcionalidad en desarrollo. Pronto podrás comprar.");
+        }
+    </script>
 </body>
 </html>
