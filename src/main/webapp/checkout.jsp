@@ -1,3 +1,5 @@
+<!-- Archivo no necesario para fase 1-->
+<!--
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">

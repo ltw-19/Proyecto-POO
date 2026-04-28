@@ -5,30 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
-    private List<Producto> listaProductos;
+    private List<Producto> productos;
 
     public Inventario() {
-        this.listaProductos = new ArrayList<>();
+        productos = new ArrayList<>();
     }
 
     public void agregarProducto(Producto p) {
-        listaProductos.add(p);
+        productos.add(p);
     }
 
-    public List<Producto> getListaProductos() {
-        return listaProductos;
+    public List<Producto> getProductos() {
+        return productos;
     }
 
-    // Lógica para reducir stock al comprar
-    public boolean procesarVenta(int idProducto, int cantidad) {
-        for (Producto p : listaProductos) {
-            if (p.getId() == idProducto) {
-                if (p.getStock() >= cantidad) {
-                    p.setStock(p.getStock() - cantidad);
-                    return true; // Venta exitosa
-                }
-            }
+    public Producto buscarPorId(int id) {
+        for (Producto p : productos) {
+            if (p.getId() == id) return p;
         }
-        return false; // No hay stock suficiente o no existe
+        return null;
     }
 }
