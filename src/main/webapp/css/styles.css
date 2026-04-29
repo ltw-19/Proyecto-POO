@@ -600,3 +600,291 @@ body {
     margin: 0;
     width: 100%;
 }
+
+/* Badge del carrito */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ef4444;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tabla del carrito */
+.carrito-main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.carrito-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.carrito-tabla th, .carrito-tabla td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+.carrito-tabla th {
+    background: #f8fafc;
+    font-weight: 600;
+}
+.btn-small {
+    background: #e2e8f0;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.btn-eliminar {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 500;
+}
+.carrito-resumen {
+    margin-top: 30px;
+    text-align: right;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.carrito-resumen .total {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2573eb;
+}
+
+/* Asegurar que el formulario de búsqueda no rompa el diseño */
+.topbar form {
+    display: flex;
+    margin: 0;
+    flex: 1;
+    max-width: 480px;
+}
+
+/* ========== MEJORAS AL CARRITO ========== */
+.carrito-resumen {
+    margin-top: 30px;
+    padding: 25px 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: right;
+}
+
+.carrito-resumen div {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+.carrito-resumen .total {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #2573eb;
+    margin-top: 15px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 15px;
+}
+
+/* Tabla del carrito más espaciada */
+.carrito-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.carrito-tabla th, .carrito-tabla td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+}
+
+.carrito-tabla th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+/* Botones sin subrayado y mejor estilo */
+.btn-product, 
+.btn-comprar-ahora,
+.btn-main,
+.btn-filtrar,
+.btn-small,
+a.btn-product,
+a.btn-comprar-ahora,
+a.btn-main,
+.carrito-resumen a.btn-product {
+    text-decoration: none !important;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+/* Botón "Proceder al pago" dentro del resumen */
+.carrito-resumen .btn-product {
+    background: #2573eb;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    margin-top: 10px;
+}
+
+.carrito-resumen .btn-product:hover {
+    background: #1a5bcb;
+    transform: scale(1.02);
+}
+
+/* Botón "Actualizar" dentro de la tabla */
+.btn-small {
+    background: #e2e8f0;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    color: #1e293b;
+}
+
+.btn-small:hover {
+    background: #cbd5e1;
+}
+
+/* Enlace "Eliminar" sin subrayado */
+.btn-eliminar {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+.btn-eliminar:hover {
+    background: #fee2e2;
+    text-decoration: none;
+}
+
+/* Asegurar que ningún botón tenga subrayado al pasar el ratón */
+button, .btn-product, .btn-comprar-ahora, .btn-main, .btn-filtrar, .btn-small, a {
+    text-decoration: none;
+}
+
+/* ========== ELIMINAR SUBRAYADO DE TODOS LOS BOTONES Y ENLACES ========== */
+.btn-product,
+.btn-comprar-ahora,
+.btn-main,
+.btn-filtrar,
+.btn-small,
+a.btn-product,
+a.btn-comprar-ahora,
+a.btn-main,
+a.btn-filtrar,
+button,
+.carrito-resumen a,
+.carrito-resumen .btn-product {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-thickness: 0 !important;
+    text-decoration-style: solid !important;
+    text-decoration-color: transparent !important;
+}
+
+/* Eliminar subrayado también en hover */
+.btn-product:hover,
+.btn-comprar-ahora:hover,
+.btn-main:hover,
+.btn-filtrar:hover,
+.btn-small:hover,
+a.btn-product:hover,
+a.btn-comprar-ahora:hover,
+a.btn-main:hover,
+a.btn-filtrar:hover,
+button:hover,
+.carrito-resumen a:hover,
+.carrito-resumen .btn-product:hover {
+    text-decoration: none !important;
+}
+
+/* ========== ESPACIADO DEFINITIVO DEL RESUMEN DEL CARRITO ========== */
+.carrito-resumen {
+    margin-top: 40px;
+    padding: 30px 35px !important;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    text-align: right;
+}
+
+.carrito-resumen div {
+    margin-bottom: 16px !important;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #1e293b;
+}
+
+.carrito-resumen .total {
+    font-size: 1.8rem !important;
+    font-weight: 800;
+    color: #2573eb !important;
+    margin-top: 20px !important;
+    padding-top: 18px;
+    border-top: 2px solid #e2e8f0;
+}
+
+/* Botón "Proceder al pago" dentro del resumen */
+.carrito-resumen .btn-product {
+    display: inline-block;
+    width: auto;
+    min-width: 220px;
+    padding: 14px 32px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    background: #2573eb;
+    color: white;
+    border: none;
+    border-radius: 60px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.carrito-resumen .btn-product:hover {
+    background: #1a5bcb;
+    transform: scale(1.02);
+}
+
+/* Separar título del carrito de la tabla */
+.carrito-main h2 {
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e2e8f0;
+    display: inline-block;
+    font-size: 1.8rem;
+}

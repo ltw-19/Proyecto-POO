@@ -19,7 +19,10 @@
         </form>
         <div class="icon-group">
             <span class="login-link">Iniciar sesión / Registro</span>
-            <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
+            <a href="carrito.jsp" style="position:relative; display:inline-block;">
+                <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
+                <span id="cartCount" class="cart-badge">0</span>
+            </a>
         </div>
     </header>
 
@@ -59,7 +62,7 @@
                         <span class="old-price">$<%= (int)(p.getPrecio() * 1.12) %></span>
                     <% } %>
                 </div>
-                <button class="btn-product" onclick="mostrarMensaje()">Agregar al carrito</button>
+                <a href="agregar-carrito?id=<%= p.getId() %>" class="btn-product">Agregar al carrito</a>
             </div>
             <%
                     }
@@ -70,10 +73,5 @@
         </div>
     </main>
 
-    <script>
-        function mostrarMensaje() {
-            alert("Funcionalidad en desarrollo. Pronto podrás comprar.");
-        }
-    </script>
 </body>
 </html>

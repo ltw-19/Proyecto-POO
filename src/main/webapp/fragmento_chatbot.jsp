@@ -184,3 +184,15 @@
         if (e.key === 'Enter') sendMessage();
     });
 </script>
+
+<script>
+function updateCartBadge() {
+    fetch('cart-count')
+        .then(response => response.json())
+        .then(data => {
+            const badge = document.getElementById('cartCount');
+            if (badge) badge.innerText = data.count;
+        });
+}
+document.addEventListener('DOMContentLoaded', updateCartBadge);
+</script>
