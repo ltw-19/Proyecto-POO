@@ -110,7 +110,7 @@
 <div id="chatbotModal" class="chatbot-modal">
     <div class="chatbot-header">
         <span>Asistente MacDigital</span>
-        <span class="chatbot-close" onclick="toggleChat()">?</span>
+        <span class="chatbot-close" onclick="toggleChat()">X</span>
     </div>
     <div id="chatbotBody" class="chatbot-body">
         <div class="bot-msg">¡Hola! Soy el asistente de MacDigital. ¿En qué puedo ayudarte?</div>
