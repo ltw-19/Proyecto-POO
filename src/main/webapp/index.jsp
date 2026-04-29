@@ -13,7 +13,7 @@
     <%@include file="fragmento_chatbot.jsp" %>
     
     <header class="topbar">
-        <div class="logo">MacDigital</div>
+        <a href="${pageContext.request.contextPath}/" class="logo-link">MacDigital</a>
         <input type="text" class="searchbar" placeholder="Buscar productos...">
         <div class="icon-group">
             <span class="login-link">Iniciar sesión / Registro</span>
@@ -36,7 +36,6 @@
             <%
                 List<Producto> destacados = (List<Producto>) request.getAttribute("destacados");
                 if (destacados == null || destacados.isEmpty()) {
-                    // Usamos una variable local sin conflictos
                     Inventario inventarioTemp = (Inventario) application.getAttribute("inventario");
                     if (inventarioTemp != null && inventarioTemp.getProductos() != null) {
                         int total = inventarioTemp.getProductos().size();
@@ -49,7 +48,9 @@
             %>
             <div class="product-card">
                 <img src="img/productos/<%= p.getImagen() %>" alt="<%= p.getNombre() %>">
-                <h3 class="prod-name"><%= p.getNombre() %></h3>
+                <a href="detalle?id=<%= p.getId() %>" class="prod-name-link">
+                    <h3 class="prod-name"><%= p.getNombre() %></h3>
+                </a>
                 <div class="prod-price">
                     $<%= p.getPrecio() %>
                     <% if(p.getId() == 2 || p.getId() == 4) { %>

@@ -568,3 +568,25 @@ body {
         width: 100%;
     }
 }
+
+/* Estilo para el logo como enlace */
+.logo-link {
+    text-decoration: none;
+    color: #2573eb;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+}
+.logo-link:hover {
+    text-decoration: none;
+    color: #1a5bcb;
+}
+
+/* Estilo para el enlace del nombre del producto */
+.prod-name-link {
+    text-decoration: none;
+    display: block;
+}
+.prod-name-link:hover .prod-name {
+    color: #2573eb;
+}

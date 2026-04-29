@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalle | MacDigital</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
 <body>
     <%@include file="fragmento_chatbot.jsp" %>
     
     <header class="topbar">
-        <div class="logo">MacDigital</div>
+        <a href="${pageContext.request.contextPath}/" class="logo-link">MacDigital</a>
         <input type="text" class="searchbar" placeholder="Buscar productos...">
         <div class="icon-group">
             <span class="login-link">Iniciar sesión / Registro</span>
@@ -31,12 +31,11 @@
             </div>
             <div class="detalle-info">
                 <h1><%= p.getNombre() %></h1>
-                <div class="detalle-precio">$<%= p.getPrecio() %></div>
+                <div class="detalle-precio">$<%= String.format("%.2f", p.getPrecio()) %></div>
                 <div class="detalle-rating">
                     ★★★★☆ <span>(128 reseñas)</span>
                 </div>
                 <div class="detalle-descripcion">
-                    <%= p.getNombre() %> con tecnología de punta. 
                     Auriculares inalámbricos con cancelación de ruido activa, batería de 30 horas de duración y sonido de alta fidelidad. Perfectos para el trabajo, viajes o el gimnasio. Diseño ergonómico y ligero.
                 </div>
                 <div class="detalle-disponibilidad">

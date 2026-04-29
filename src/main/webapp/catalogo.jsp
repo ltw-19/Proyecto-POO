@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Catálogo | MacDigital</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
 </head>
 <body>
     <%@include file="fragmento_chatbot.jsp" %>
     
     <header class="topbar">
-        <div class="logo">MacDigital</div>
+        <a href="${pageContext.request.contextPath}/" class="logo-link">MacDigital</a>
         <input type="text" class="searchbar" placeholder="Buscar productos...">
         <div class="icon-group">
             <span class="login-link">Iniciar sesión / Registro</span>
@@ -20,10 +20,8 @@
     </header>
 
     <main class="catalogo-container">
-        <!-- Barra lateral de filtros -->
         <aside class="filtros-sidebar">
             <h3>Filtros</h3>
-            
             <div class="filtro-grupo">
                 <h4>Categoría</h4>
                 <label><input type="checkbox" value="laptop" class="filtro-categoria"> Laptops</label>
@@ -31,13 +29,11 @@
                 <label><input type="checkbox" value="auricular" class="filtro-categoria"> Audio</label>
                 <label><input type="checkbox" value="wearable" class="filtro-categoria"> Wearables</label>
             </div>
-
             <div class="filtro-grupo">
                 <h4>Precio</h4>
                 <input type="range" id="precioMax" min="0" max="2000" step="50" value="2000">
                 <div class="precio-valor">Hasta: $<span id="precioMostrar">2000</span></div>
             </div>
-
             <div class="filtro-grupo">
                 <h4>Marca</h4>
                 <label><input type="checkbox" value="Apple" class="filtro-marca"> Apple</label>
@@ -45,7 +41,6 @@
                 <label><input type="checkbox" value="Sony" class="filtro-marca"> Sony</label>
                 <label><input type="checkbox" value="Xiaomi" class="filtro-marca"> Xiaomi</label>
             </div>
-
             <div class="filtro-grupo">
                 <h4>Popularidad</h4>
                 <select id="ordenar">
@@ -54,11 +49,9 @@
                     <option value="mayorPrecio">Mayor precio</option>
                 </select>
             </div>
-
             <button id="aplicarFiltros" class="btn-filtrar">Aplicar filtros</button>
         </aside>
 
-        <!-- Sección de productos -->
         <section class="productos-section">
             <div class="resultados-header">
                 <span id="contadorProductos">0</span> productos encontrados
@@ -77,7 +70,7 @@
                         else if (p.getNombre().toLowerCase().contains("auricular")) categoria = "auricular";
                         else if (p.getNombre().toLowerCase().contains("smartwatch")) categoria = "wearable";
                         
-                        String marca = "Xiaomi"; // por defecto
+                        String marca = "Xiaomi";
                         if (p.getNombre().contains("Apple")) marca = "Apple";
                         else if (p.getNombre().contains("Samsung")) marca = "Samsung";
                         else if (p.getNombre().contains("Sony")) marca = "Sony";
@@ -88,7 +81,9 @@
                      data-categoria="<%= categoria %>"
                      data-marca="<%= marca %>">
                     <img src="img/productos/<%= p.getImagen() %>" alt="<%= p.getNombre() %>">
-                    <h3 class="prod-name"><%= p.getNombre() %></h3>
+                    <a href="detalle?id=<%= p.getId() %>" class="prod-name-link">
+                        <h3 class="prod-name"><%= p.getNombre() %></h3>
+                    </a>
                     <div class="prod-price">
                         $<%= p.getPrecio() %>
                         <% if(p.getId() == 2 || p.getId() == 4) { %>
