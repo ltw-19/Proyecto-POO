@@ -14,7 +14,9 @@
     
     <header class="topbar">
         <a href="${pageContext.request.contextPath}/" class="logo-link">MacDigital</a>
-        <input type="text" class="searchbar" placeholder="Buscar productos...">
+        <form action="catalogo" method="get" style="flex: 1; max-width: 480px; margin: 0;">
+            <input type="text" name="buscar" class="searchbar" placeholder="Buscar productos..." value="${param.buscar}">
+        </form>
         <div class="icon-group">
             <span class="login-link">Iniciar sesión / Registro</span>
             <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">

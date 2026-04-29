@@ -1,7 +1,10 @@
 package com.shopsmart.controller;
 
 import com.shopsmart.model.Inventario;
+import com.shopsmart.model.Producto;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +22,24 @@ public class TiendaServlet extends HttpServlet {
         }
         
         String path = req.getServletPath();
+        String busqueda = req.getParameter("buscar");
+        
+        // Obtener todos los productos
+        List<Producto> todos = inv.getProductos();
+        
+        // Filtrar por búsqueda si existe
+        if (busqueda != null && !busqueda.trim().isEmpty()) {
+            String termino = busqueda.trim().toLowerCase();
+            todos = todos.stream()
+                         .filter(p -> p.getNombre().toLowerCase().contains(termino))
+                         .collect(Collectors.toList());
+            req.setAttribute("terminoBusqueda", busqueda); // para mostrar en la vista
+        }
+        
         if ("/catalogo".equals(path)) {
-            req.setAttribute("productos", inv.getProductos());
+            req.setAttribute("productos", todos);
             req.getRequestDispatcher("/catalogo.jsp").forward(req, resp);
-        } else {
-            // Para la raíz y /inicio
+        } else if ("/inicio".equals(path)) {
             int total = inv.getProductos().size();
             int limit = Math.min(4, total);
             req.setAttribute("destacados", inv.getProductos().subList(0, limit));

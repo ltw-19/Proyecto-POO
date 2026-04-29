@@ -590,3 +590,13 @@ body {
 .prod-name-link:hover .prod-name {
     color: #2573eb;
 }
+
+/* Alinear formulario de búsqueda */
+.topbar form {
+    display: flex;
+    margin: 0;
+}
+.topbar .searchbar {
+    margin: 0;
+    width: 100%;
+}

@@ -12,7 +12,9 @@
     
     <header class="topbar">
         <a href="${pageContext.request.contextPath}/" class="logo-link">MacDigital</a>
-        <input type="text" class="searchbar" placeholder="Buscar productos...">
+        <form action="catalogo" method="get" style="flex: 1; max-width: 480px; margin: 0;">
+            <input type="text" name="buscar" class="searchbar" placeholder="Buscar productos..." value="${param.buscar}">
+        </form>
         <div class="icon-group">
             <span class="login-link">Iniciar sesión / Registro</span>
             <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
@@ -55,6 +57,9 @@
         <section class="productos-section">
             <div class="resultados-header">
                 <span id="contadorProductos">0</span> productos encontrados
+                <% if(request.getAttribute("terminoBusqueda") != null) { %>
+                    <span style="margin-left: 15px;">🔍 Resultados para "<%= request.getAttribute("terminoBusqueda") %>"</span>
+                <% } %>
             </div>
             <div class="products-list" id="listaProductos">
                 <%
@@ -63,17 +68,22 @@
                         response.sendRedirect("catalogo");
                         return;
                     }
-                    for (Producto p : todos) {
-                        String categoria = "";
-                        if (p.getNombre().toLowerCase().contains("laptop")) categoria = "laptop";
-                        else if (p.getNombre().toLowerCase().contains("smartphone")) categoria = "smartphone";
-                        else if (p.getNombre().toLowerCase().contains("auricular")) categoria = "auricular";
-                        else if (p.getNombre().toLowerCase().contains("smartwatch")) categoria = "wearable";
-                        
-                        String marca = "Xiaomi";
-                        if (p.getNombre().contains("Apple")) marca = "Apple";
-                        else if (p.getNombre().contains("Samsung")) marca = "Samsung";
-                        else if (p.getNombre().contains("Sony")) marca = "Sony";
+                    if (todos.isEmpty()) {
+                %>
+                    <p style="text-align: center; width: 100%;">No se encontraron productos con ese nombre. <a href="catalogo">Ver todos</a></p>
+                <%
+                    } else {
+                        for (Producto p : todos) {
+                            String categoria = "";
+                            if (p.getNombre().toLowerCase().contains("laptop")) categoria = "laptop";
+                            else if (p.getNombre().toLowerCase().contains("smartphone")) categoria = "smartphone";
+                            else if (p.getNombre().toLowerCase().contains("auricular")) categoria = "auricular";
+                            else if (p.getNombre().toLowerCase().contains("smartwatch")) categoria = "wearable";
+                            
+                            String marca = "Xiaomi";
+                            if (p.getNombre().contains("Apple")) marca = "Apple";
+                            else if (p.getNombre().contains("Samsung")) marca = "Samsung";
+                            else if (p.getNombre().contains("Sony")) marca = "Sony";
                 %>
                 <div class="product-card" 
                      data-nombre="<%= p.getNombre().toLowerCase() %>"
@@ -92,7 +102,10 @@
                     </div>
                     <button class="btn-product" onclick="mostrarMensaje()">Agregar al carrito</button>
                 </div>
-                <% } %>
+                <%
+                        }
+                    }
+                %>
             </div>
         </section>
     </main>
