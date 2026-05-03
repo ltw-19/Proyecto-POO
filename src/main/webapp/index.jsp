@@ -44,7 +44,7 @@
                     Inventario inventarioTemp = (Inventario) application.getAttribute("inventario");
                     if (inventarioTemp != null && inventarioTemp.getProductos() != null) {
                         int total = inventarioTemp.getProductos().size();
-                        int limit = Math.min(4, total);
+                        int limit = Math.min(6, total);
                         destacados = inventarioTemp.getProductos().subList(0, limit);
                     }
                 }

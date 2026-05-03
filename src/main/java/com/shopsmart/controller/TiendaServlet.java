@@ -41,7 +41,7 @@ public class TiendaServlet extends HttpServlet {
             req.getRequestDispatcher("/catalogo.jsp").forward(req, resp);
         } else if ("/inicio".equals(path)) {
             int total = inv.getProductos().size();
-            int limit = Math.min(4, total);
+            int limit = Math.min(6, total);
             req.setAttribute("destacados", inv.getProductos().subList(0, limit));
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
         }

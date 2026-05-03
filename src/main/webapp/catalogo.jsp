@@ -33,6 +33,7 @@
                 <label><input type="checkbox" value="smartphone" class="filtro-categoria"> Smartphones</label>
                 <label><input type="checkbox" value="auricular" class="filtro-categoria"> Audio</label>
                 <label><input type="checkbox" value="wearable" class="filtro-categoria"> Wearables</label>
+                <label><input type="checkbox" value="gaming" class="filtro-categoria"> Gaming</label>
             </div>
             <div class="filtro-grupo">
                 <h4>Precio</h4>
@@ -45,6 +46,7 @@
                 <label><input type="checkbox" value="Samsung" class="filtro-marca"> Samsung</label>
                 <label><input type="checkbox" value="Sony" class="filtro-marca"> Sony</label>
                 <label><input type="checkbox" value="Xiaomi" class="filtro-marca"> Xiaomi</label>
+                <label><input type="checkbox" value="Nintendo" class="filtro-marca"> Nintendo</label>
             </div>
             <div class="filtro-grupo">
                 <h4>Popularidad</h4>
@@ -78,15 +80,19 @@
                     } else {
                         for (Producto p : todos) {
                             String categoria = "";
-                            if (p.getNombre().toLowerCase().contains("laptop")) categoria = "laptop";
-                            else if (p.getNombre().toLowerCase().contains("smartphone")) categoria = "smartphone";
-                            else if (p.getNombre().toLowerCase().contains("auricular")) categoria = "auricular";
-                            else if (p.getNombre().toLowerCase().contains("smartwatch")) categoria = "wearable";
+                            String nombreLower = p.getNombre().toLowerCase();
+                            if (nombreLower.contains("laptop") || nombreLower.contains("macbook")) categoria = "laptop";
+                            else if (nombreLower.contains("smartphone") || nombreLower.contains("iphone") || nombreLower.contains("xiaomi")) categoria = "smartphone";
+                            else if (nombreLower.contains("auricular") || nombreLower.contains("airpods") || nombreLower.contains("earbuds")) categoria = "auricular";
+                            else if (nombreLower.contains("smartwatch") || nombreLower.contains("watch")) categoria = "wearable";
+                            else if (nombreLower.contains("nintendo") || nombreLower.contains("playstation")) categoria = "gaming";
                             
                             String marca = "Xiaomi";
-                            if (p.getNombre().contains("Apple")) marca = "Apple";
-                            else if (p.getNombre().contains("Samsung")) marca = "Samsung";
-                            else if (p.getNombre().contains("Sony")) marca = "Sony";
+                            String nombreProd = p.getNombre();
+                            if (nombreProd.contains("Apple") || nombreProd.contains("AirPods") || nombreProd.contains("iPhone") || nombreProd.contains("MacBook")) marca = "Apple";
+                            else if (nombreProd.contains("Samsung")) marca = "Samsung";
+                            else if (nombreProd.contains("Sony") || nombreProd.contains("PlayStation")) marca = "Sony";
+                            else if (nombreProd.contains("Nintendo")) marca = "Nintendo";
                 %>
                 <div class="product-card" 
                      data-nombre="<%= p.getNombre().toLowerCase() %>"
