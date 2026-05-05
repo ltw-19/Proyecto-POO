@@ -42,10 +42,7 @@
         display: flex;
         justify-content: space-between;
         font-weight: 600;
-    }
-    .chatbot-header span:first-child::before {
-        content: "? ";
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     .chatbot-close {
         cursor: pointer;
@@ -109,8 +106,8 @@
 <div class="chatbot-btn" onclick="toggleChat()"></div>
 <div id="chatbotModal" class="chatbot-modal">
     <div class="chatbot-header">
-        <span>Asistente MacDigital</span>
-        <span class="chatbot-close" onclick="toggleChat()">X</span>
+        <span>&#129302; Asistente MacDigital</span>
+        <span class="chatbot-close" onclick="toggleChat()">&times;</span>
     </div>
     <div id="chatbotBody" class="chatbot-body">
         <div class="bot-msg">¡Hola! Soy el asistente de MacDigital. ¿En qué puedo ayudarte?</div>
@@ -155,23 +152,23 @@
             if (lowerMsg.includes("hola") || lowerMsg.includes("buenas")) {
                 respuesta = "¡Hola! ¿Buscas algún producto en especial? Te puedo recomendar laptops, smartphones o audífonos.";
             } 
-            else if (lowerMsg.includes("ofertas") || lowerMsg.includes("promociones")) {
-                respuesta = "? Oferta especial: Auriculares Deportivos a solo $149 (antes $199). ¡Aprovecha! También tenemos Smartwatch con 10% off.";
+            else if (lowerMsg.includes("ofertas") || lowerMsg.includes("promociones") || lowerMsg.includes("oferta")) {
+                respuesta = "&#128293; Oferta especial: Auriculares Deportivos a solo $149 (antes $199). ¡Aprovecha! También tenemos Smartwatch con 10% off.";
             }
             else if (lowerMsg.includes("laptop") || lowerMsg.includes("computadora")) {
-                respuesta = "? Nuestra laptop más vendida es la Laptop Pro 15\" por $1299. ¿Te gustaría ver más detalles?";
+                respuesta = "&#128187; Nuestra laptop más vendida es la Laptop Pro 15\" por $1299. ";
             }
             else if (lowerMsg.includes("audífono") || lowerMsg.includes("auricular")) {
-                respuesta = "? Tenemos Auriculares Wireless ($249) y Auriculares Deportivos ($149). Ambos con gran calidad de sonido.";
+                respuesta = "&#127911; Tenemos Auriculares Wireless ($249) y Auriculares Deportivos ($149). Ambos con gran calidad de sonido.";
             }
             else if (lowerMsg.includes("smartphone") || lowerMsg.includes("celular")) {
-                respuesta = "? El Smartphone X tiene excelente cámara y batería. Precio: $899.";
+                respuesta = "&#128241; El Smartphone X tiene excelente cámara y batería. Precio: $899.";
             }
-            else if (lowerMsg.includes("catálogo") || lowerMsg.includes("todos")) {
-                respuesta = "Puedes ver todos nuestros productos en el catálogo: <a href='catalogo' style='color:#10c198;'>haz clic aquí</a>.";
+            else if (lowerMsg.includes("catálogo") || lowerMsg.includes("catalogo") || lowerMsg.includes("todos")) {
+                respuesta = "Puedes ver todos nuestros productos en el catálogo: <a href='catalogo.jsp' style='color:#10c198;'>haz clic aquí</a>.";
             }
             else if (lowerMsg.includes("gracias")) {
-                respuesta = "¡De nada! Estamos para servirte. ?";
+                respuesta = "¡De nada! Estamos para servirte. &#128522;";
             }
             else {
                 respuesta = "Lo siento, no entendí. Puedes preguntar por: ofertas, laptops, audífonos, smartphones o escribir 'catálogo'.";
