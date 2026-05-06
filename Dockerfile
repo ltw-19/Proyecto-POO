@@ -1,13 +1,15 @@
+# Le decimos a Render que use una imagen base con Tomcat 9 y Java 17
 FROM tomcat:9.0-jdk17
 
-# Elimina la aplicación por defecto de Tomcat
+# Eliminamos la aplicación por defecto de Tomcat para tener un entorno limpio
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copia tu archivo WAR (renombrado como ROOT.war) dentro de la carpeta de Tomcat
-COPY target/ShopSmartAI-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+# Copiamos tu archivo WAR a la carpeta donde Tomcat la desplegará automáticamente
+# Usamos un comodín (*) para que funcione aunque la versión del archivo cambie
+COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
 
-# Exponer el puerto en el que correrá la app
+# Exponemos el puerto estándar que usará nuestra aplicación
 EXPOSE 8080
 
-# Comando para iniciar Tomcat
+# Comando para iniciar el servidor Tomcat
 CMD ["catalina.sh", "run"]
