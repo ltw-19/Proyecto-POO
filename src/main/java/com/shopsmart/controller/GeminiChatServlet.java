@@ -24,7 +24,7 @@ public class GeminiChatServlet extends HttpServlet {
 
     //private static final String API_KEY = System.getenv("GEMINI_API_KEY");
     // Si la variable de entorno no funciona, descomenta la línea siguiente y pega tu clave:
-    private static final String API_KEY = "AIzaSyAqbhjSk1NxI8THh0gvm1QyJInNtqWS8ls";
+    private static final String API_KEY = "";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
