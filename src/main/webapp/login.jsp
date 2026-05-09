@@ -149,6 +149,7 @@
             color: #0071e3;
             font-size: 13px;
             text-decoration: none;
+            cursor: pointer;
         }
         
         .forgot-password a:hover {
@@ -167,6 +168,80 @@
             width: auto;
         }
         
+        /* Estilos para el modal de aviso */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal-dialog {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .modal-dialog .modal-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-dialog h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        
+        .modal-dialog p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .modal-dialog .btn-modal {
+            padding: 10px 30px;
+            background: #0071e3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .modal-dialog .btn-modal:hover {
+            background: #0064c8;
+        }
+        
         @media (max-width: 768px) {
             .auth-container {
                 flex-direction: column;
@@ -182,7 +257,18 @@
     </style>
 </head>
 <body>
+    
     <%@include file="fragmento_chatbot.jsp" %>
+    
+    <!-- Modal de aviso -->
+    <div class="modal-overlay" id="devModal">
+        <div class="modal-dialog">
+            <div class="modal-icon">🚧</div>
+            <h3>Funcionalidad en Desarrollo</h3>
+            <p>Esta característica estará disponible próximamente. Nuestro equipo está trabajando para brindarte la mejor experiencia.</p>
+            <button class="btn-modal" onclick="closeModal()">Entendido</button>
+        </div>
+    </div>
     
     <header class="topbar">
         <a href="${pageContext.request.contextPath}/" class="logo-link">MacDigital</a>
@@ -201,6 +287,8 @@
             <h2>Iniciar Sesión</h2>
             <p>Bienvenido de nuevo a MacDigital</p>
             
+            <!-- CÓDIGO ORIGINAL DEL FORMULARIO DE LOGIN (GUARDADO PARA FUTURA IMPLEMENTACIÓN)
+            
             <form action="login" method="post" id="loginForm">
                 <div class="form-group">
                     <label for="loginUsuario">Usuario</label>
@@ -215,7 +303,33 @@
                 </div>
                 
                 <div class="forgot-password">
-                    <a href="#" onclick="alert('Funcionalidad en desarrollo')">¿Olvidaste tu contraseña?</a>
+                    <a href="recuperar-password.jsp">¿Olvidaste tu contraseña?</a>
+                </div>
+                
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Recordarme</label>
+                </div>
+                
+                <button type="submit" class="btn-auth">Iniciar Sesión</button>
+            </form>
+            -->
+            
+            <form onsubmit="event.preventDefault(); showDevModal();">
+                <div class="form-group">
+                    <label for="loginUsuario">Usuario</label>
+                    <input type="text" id="loginUsuario" name="usuario" 
+                           placeholder="Ingresa tu usuario">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" name="password" 
+                           placeholder="Ingresa tu contraseña">
+                </div>
+                
+                <div class="forgot-password">
+                    <a onclick="showDevModal()">¿Olvidaste tu contraseña?</a>
                 </div>
                 
                 <div class="remember-me">
@@ -236,6 +350,8 @@
         <div class="auth-panel register-panel" id="registerPanel">
             <h2>Crear Cuenta</h2>
             <p>Únete a MacDigital y disfruta de compras inteligentes</p>
+            
+            <!-- CÓDIGO ORIGINAL DEL FORMULARIO DE REGISTRO (GUARDADO PARA FUTURA IMPLEMENTACIÓN)
             
             <form action="registro" method="post" id="registerForm">
                 <div class="form-group">
@@ -265,6 +381,35 @@
                 
                 <button type="submit" class="btn-auth">Crear Cuenta</button>
             </form>
+            -->
+            
+            <form onsubmit="event.preventDefault(); showDevModal();">
+                <div class="form-group">
+                    <label for="regUsuario">Usuario</label>
+                    <input type="text" id="regUsuario" name="usuario" 
+                           placeholder="Elige un nombre de usuario">
+                </div>
+                
+                <div class="form-group">
+                    <label for="regEmail">Correo Electrónico</label>
+                    <input type="email" id="regEmail" name="email" 
+                           placeholder="tu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="regPassword">Contraseña</label>
+                    <input type="password" id="regPassword" name="password" 
+                           placeholder="Crea una contraseña segura">
+                </div>
+                
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirmar Contraseña</label>
+                    <input type="password" id="regConfirmPassword" name="confirmPassword" 
+                           placeholder="Repite tu contraseña">
+                </div>
+                
+                <button type="submit" class="btn-auth">Crear Cuenta</button>
+            </form>
             
             <div class="switch-link">
                 ¿Ya tienes una cuenta? 
@@ -274,6 +419,25 @@
     </div>
 
     <script>
+        
+        // Función para mostrar el modal de desarrollo
+        function showDevModal() {
+            document.getElementById('devModal').classList.add('active');
+        }
+        
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('devModal').classList.remove('active');
+        }
+        
+        // Cerrar modal al hacer clic fuera de él
+        document.getElementById('devModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Funciones para alternar entre paneles
         function showRegister() {
             document.getElementById('loginPanel').classList.add('hide');
             document.getElementById('loginPanel').classList.remove('show');
@@ -287,6 +451,8 @@
             document.getElementById('loginPanel').classList.add('show');
             document.getElementById('loginPanel').classList.remove('hide');
         }
+        
+        /*(CÓDIGO ORIGINAL DE VALIDACIÓN (GUARDADO PARA FUTURA IMPLEMENTACIÓN)
         
         // Validación de contraseñas en el registro
         document.getElementById('registerForm').addEventListener('submit', function(e) {
@@ -313,6 +479,7 @@
         if (urlParams.get('error') === 'credenciales') {
             alert('Usuario o contraseña incorrectos');
         }
+        */
     </script>
     
 </body>
