@@ -28,11 +28,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-            <!-- 
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>${jakartaee}</version>
-            <scope>provided</scope>-->
+            
         </dependency>
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
@@ -40,14 +36,6 @@
             <version>2.1.6</version>
         </dependency>
         
-        <!--
-        <dependency>
-            <groupId>com.google.genai</groupId>
-            <artifactId>google-genai</artifactId>
-            <version>1.0.0</version>
-        
-        </dependency>
-        -->
     </dependencies>
     
     

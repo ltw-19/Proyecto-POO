@@ -17,6 +17,6 @@ public class ActualizarCarritoServlet extends HttpServlet {
         if (carrito != null) {
             carrito.updateQuantity(id, cantidad);
         }
-        resp.sendRedirect("carrito.jsp");   // antes era "carrito"
+        resp.sendRedirect("carrito.jsp");
     }
 }

@@ -831,7 +831,7 @@ button:hover,
     text-decoration: none !important;
 }
 
-/* ========== ESPACIADO DEFINITIVO DEL RESUMEN DEL CARRITO ========== */
+/* ========== ESPACIADO DEL RESUMEN DEL CARRITO ========== */
 .carrito-resumen {
     margin-top: 40px;
     padding: 30px 35px !important;

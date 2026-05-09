@@ -106,12 +106,12 @@
 <div class="chatbot-btn" onclick="toggleChat()"></div>
 <div id="chatbotModal" class="chatbot-modal">
     <div class="chatbot-header">
-        <span>&#129302; Asistente MacDigital</span>
+        <span>Asistente MacDigital</span>
         <span class="chatbot-close" onclick="toggleChat()">&times;</span>
     </div>
     <div id="chatbotBody" class="chatbot-body">
-        <div class="bot-msg">¡Hola! Soy el asistente de MacDigital. ¿En qué puedo ayudarte?</div>
-        <div class="bot-msg">Puedes preguntarme por: <strong>ofertas, productos, o escribir "catálogo"</strong>.</div>
+        <div class="bot-msg">Hola! Soy el asistente de MacDigital. ¿En que puedo ayudarte?</div>
+        <div class="bot-msg">Puedes preguntarme por: productos, ofertas, precios, tasa, contacto, horario, envios, garantia.</div>
     </div>
     <div class="chatbot-footer">
         <input type="text" id="chatInput" placeholder="Escribe tu duda...">
@@ -149,29 +149,85 @@
             var lowerMsg = msg.toLowerCase();
             var respuesta = "";
 
-            if (lowerMsg.includes("hola") || lowerMsg.includes("buenas")) {
-                respuesta = "¡Hola! ¿Buscas algún producto en especial? Te puedo recomendar laptops, smartphones o audífonos.";
+            var listaProductos = "[Productos disponibles] \n" +
+                "- Laptop Pro 15: $1299\n" +
+                "- Smartphone X: $899\n" +
+                "- Auriculares Wireless: $249\n" +
+                "- Smartwatch Series 5: $399\n" +
+                "- Auriculares Deportivos: $149\n" +
+                "- Earbuds Mini: $89\n" +
+                "- Nintendo Switch 2: $499\n" +
+                "- PS5: $699\n" +
+                "Visita el catalogo para mas detalles.";
+
+            var tasa = "[Tasa de cambio actual] 1 USD = 500 Bs (tasa de referencia).";
+
+            var horario = "[Horario de atencion] \nLunes a Viernes: 9:00 AM - 7:00 PM\nSabados: 10:00 AM - 3:00 PM\nDomingos: Cerrado.";
+
+            var contacto = "[Contacto] \nTelefono: +58 212-555-1234\nCorreo: soporte@macdigital.com\nDireccion: Av. Principal, Caracas, Venezuela.";
+
+            var metodosPago = "[Metodos de pago] Visa, Mastercard, PayPal, Pago movil, Transferencia bancaria.";
+
+            var envio = "[Envios] Envios a todo el pais. Costo calculado al momento de la compra. Envio gratis en compras mayores a $50.";
+
+            var garantia = "[Garantia] 1 ano contra defectos de fabrica en todos los productos.";
+
+            var ofertas = "[Ofertas vigentes] \n- Auriculares Deportivos: $149 (antes $199)\n- Smartwatch Series 5: $399 (antes $450)\n- Laptop Pro 15 con 10% off. Aprovecha!";
+
+            if (lowerMsg.includes("tasa") || lowerMsg.includes("cambio") || lowerMsg.includes("bs") || lowerMsg.includes("dolar")) {
+                respuesta = tasa;
             } 
-            else if (lowerMsg.includes("ofertas") || lowerMsg.includes("promociones") || lowerMsg.includes("oferta")) {
-                respuesta = "&#128293; Oferta especial: Auriculares Deportivos a solo $149 (antes $199). ¡Aprovecha! También tenemos Smartwatch con 10% off.";
+            else if (lowerMsg.includes("productos") || lowerMsg.includes("lista") || lowerMsg.includes("disponibles")) {
+                respuesta = listaProductos;
             }
-            else if (lowerMsg.includes("laptop") || lowerMsg.includes("computadora")) {
-                respuesta = "&#128187; Nuestra laptop más vendida es la Laptop Pro 15\" por $1299. ";
+            else if (lowerMsg.includes("horario") || lowerMsg.includes("atencion")) {
+                respuesta = horario;
             }
-            else if (lowerMsg.includes("audífono") || lowerMsg.includes("auricular")) {
-                respuesta = "&#127911; Tenemos Auriculares Wireless ($249) y Auriculares Deportivos ($149). Ambos con gran calidad de sonido.";
+            else if (lowerMsg.includes("contacto") || lowerMsg.includes("telefono") || lowerMsg.includes("correo")) {
+                respuesta = contacto;
             }
-            else if (lowerMsg.includes("smartphone") || lowerMsg.includes("celular")) {
-                respuesta = "&#128241; El Smartphone X tiene excelente cámara y batería. Precio: $899.";
+            else if (lowerMsg.includes("pago") || lowerMsg.includes("metodos")) {
+                respuesta = metodosPago;
             }
-            else if (lowerMsg.includes("catálogo") || lowerMsg.includes("catalogo") || lowerMsg.includes("todos")) {
-                respuesta = "Puedes ver todos nuestros productos en el catálogo: <a href='catalogo.jsp' style='color:#10c198;'>haz clic aquí</a>.";
+            else if (lowerMsg.includes("envio") || lowerMsg.includes("entrega")) {
+                respuesta = envio;
+            }
+            else if (lowerMsg.includes("garantia")) {
+                respuesta = garantia;
+            }
+            else if (lowerMsg.includes("ofertas") || lowerMsg.includes("promociones")) {
+                respuesta = ofertas;
+            }
+            else if (lowerMsg.includes("precio") || lowerMsg.includes("costo") || lowerMsg.includes("cuanto cuesta")) {
+                if (lowerMsg.includes("laptop")) respuesta = "La Laptop Pro 15 cuesta $1299.";
+                else if (lowerMsg.includes("smartphone") || lowerMsg.includes("celular")) respuesta = "Smartphone X cuesta $899.";
+                else if (lowerMsg.includes("auriculares") && lowerMsg.includes("wireless")) respuesta = "Auriculares Wireless cuestan $249.";
+                else if (lowerMsg.includes("auriculares") && lowerMsg.includes("deportivos")) respuesta = "Auriculares Deportivos cuestan $149.";
+                else if (lowerMsg.includes("smartwatch") || lowerMsg.includes("reloj")) respuesta = "Smartwatch Series 5 cuesta $399.";
+                else if (lowerMsg.includes("nintendo") || lowerMsg.includes("switch")) respuesta = "Nintendo Switch 2 cuesta $499.";
+                else if (lowerMsg.includes("ps5") || lowerMsg.includes("playstation")) respuesta = "PS5 cuesta $699.";
+                else respuesta = "Indicame el producto (laptop, smartphone, auriculares, smartwatch, nintendo, ps5) y te dire su precio.";
+            }
+            else if (lowerMsg.includes("hola") || lowerMsg.includes("buenas")) {
+                respuesta = "Hola! En que puedo asistirte? Pregunta por productos, ofertas, precios, tasa, horario, etc.";
+            } 
+            else if (lowerMsg.includes("laptop") && !lowerMsg.includes("precio")) {
+                respuesta = "Laptop Pro 15 tiene Intel i7, 16GB RAM, SSD 512GB y pantalla Full HD. Precio: $1299.";
+            }
+            else if (lowerMsg.includes("auricular") && !lowerMsg.includes("precio")) {
+                respuesta = "Tenemos Auriculares Wireless (cancelacion de ruido) por $249 y Deportivos (resistentes al sudor) por $149.";
+            }
+            else if (lowerMsg.includes("smartphone")) {
+                respuesta = "Smartphone X con camara 108MP, 6.5 AMOLED y bateria 5000mAh. Precio: $899.";
+            }
+            else if (lowerMsg.includes("catalogo")) {
+                respuesta = "Puedes ver todos nuestros productos en el catalogo: <a href='catalogo.jsp' style='color:#10c198;'>haz clic aqui</a>.";
             }
             else if (lowerMsg.includes("gracias")) {
-                respuesta = "¡De nada! Estamos para servirte. &#128522;";
+                respuesta = "De nada! Estamos para ayudarte.";
             }
             else {
-                respuesta = "Lo siento, no entendí. Puedes preguntar por: ofertas, laptops, audífonos, smartphones o escribir 'catálogo'.";
+                respuesta = "Lo siento, no te he entendido. Puedes preguntar: productos, ofertas, precio [producto], tasa, contacto, horario. Tambien escribe 'catalogo'.";
             }
             addMessage(respuesta, false);
         }, 500);

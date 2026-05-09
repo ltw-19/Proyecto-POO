@@ -16,6 +16,6 @@ public class EliminarCarritoServlet extends HttpServlet {
         if (carrito != null) {
             carrito.removeItem(id);
         }
-        resp.sendRedirect("carrito.jsp");   // antes era "carrito"
+        resp.sendRedirect("carrito.jsp"); 
     }
 }
