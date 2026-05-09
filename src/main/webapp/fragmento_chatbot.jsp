@@ -1,3 +1,4 @@
+<%@page pageEncoding="UTF-8"%>
 <%@page import="com.shopsmart.model.Inventario"%>
 <%
     Inventario inv = (Inventario) application.getAttribute("inventario");
@@ -106,12 +107,12 @@
 <div class="chatbot-btn" onclick="toggleChat()"></div>
 <div id="chatbotModal" class="chatbot-modal">
     <div class="chatbot-header">
-        <span>Asistente MacDigital</span>
+        <span>🤖 Asistente MacDigital</span>
         <span class="chatbot-close" onclick="toggleChat()">&times;</span>
     </div>
     <div id="chatbotBody" class="chatbot-body">
-        <div class="bot-msg">Hola! Soy el asistente de MacDigital. �En que puedo ayudarte?</div>
-        <div class="bot-msg">Puedes preguntarme por: productos, ofertas, precios, tasa, contacto, horario, envios, garantia.</div>
+        <div class="bot-msg">¡Hola! Soy el asistente de MacDigital. ¿En qué puedo ayudarte?</div>
+        <div class="bot-msg">Puedes preguntarme por: <strong>productos, ofertas, precios, tasa💰, contacto📞, horario🕒, envios🚚, garantia🔧</strong>.</div>
     </div>
     <div class="chatbot-footer">
         <input type="text" id="chatInput" placeholder="Escribe tu duda...">
@@ -149,42 +150,55 @@
             var lowerMsg = msg.toLowerCase();
             var respuesta = "";
 
-            var listaProductos = "[Productos disponibles] \n" +
-                "- Laptop Pro 15: $1299\n" +
-                "- Smartphone X: $899\n" +
-                "- Auriculares Wireless: $249\n" +
-                "- Smartwatch Series 5: $399\n" +
-                "- Auriculares Deportivos: $149\n" +
-                "- Earbuds Mini: $89\n" +
-                "- Nintendo Switch 2: $499\n" +
-                "- PS5: $699\n" +
-                "Visita el catalogo para mas detalles.";
+            var listaProductos = "📦 <strong>Productos disponibles:</strong><br>" +
+                "✅ Laptop Pro 15\": $1299<br>" +
+                "✅ Smartphone X: $899<br>" +
+                "✅ Auriculares Wireless: $249<br>" +
+                "✅ Smartwatch Series 5: $399<br>" +
+                "✅ Auriculares Deportivos: $149<br>" +
+                "✅ Earbuds Mini: $89<br>" +
+                "✅ Nintendo Switch 2: $499<br>" +
+                "✅ PS5: $699<br>" +
+                "👉 Visita el <a href='catalogo.jsp' style='color:#10c198;'>catálogo</a> para más detalles.";
 
-            var tasa = "[Tasa de cambio actual] 1 USD = 500 Bs (tasa de referencia).";
+            var tasa = "💰 <strong>Tasa de cambio actual:</strong> 1 USD = 500 Bs (tasa de referencia).";
 
-            var horario = "[Horario de atencion] \nLunes a Viernes: 9:00 AM - 7:00 PM\nSabados: 10:00 AM - 3:00 PM\nDomingos: Cerrado.";
+            // Nuevo horario según especificación
+            var horario = "🕒 <strong>Horario de atención:</strong><br>Lunes a Sábados: 9:00 AM - 8:00 PM<br>Domingo: 10:00 AM - 7:00 PM";
 
-            var contacto = "[Contacto] \nTelefono: +58 212-555-1234\nCorreo: soporte@macdigital.com\nDireccion: Av. Principal, Caracas, Venezuela.";
+            // Nuevo contacto con Instagram, teléfonos y dirección
+            var contacto = "📞 <strong>Contacto MacDigital:</strong><br>" +
+                "📱 Teléfonos:\n0412-829-11-70 / 0212-761-18-04<br>" +
+                "📷 Instagram: <a href='https://www.instagram.com/macdigital.ve' target='_blank'>@macdigital.ve</a><br>" +
+                "📍 Dirección: Centro Comercial CityMarket, Piso 3, Local 329.<br>" +
+                "✉️ Correo: soporte@macdigital.com";
 
-            var metodosPago = "[Metodos de pago] Visa, Mastercard, PayPal, Pago movil, Transferencia bancaria.";
+            var metodosPago = "💳 <strong>Métodos de pago:</strong> Visa, Mastercard, PayPal, Pago móvil, Transferencia bancaria.";
+            var envio = "🚚 <strong>Envíos:</strong> A todo el país. Costo calculado al momento. Envío gratis en compras > $50.";
+            var garantia = "🔧 <strong>Garantía:</strong> 1 año contra defectos de fábrica en todos los productos.";
+            var ofertas = "🔥 <strong>Ofertas vigentes:</strong><br>🎧 Auriculares Deportivos: $149 (antes $199)<br>⌚ Smartwatch Series 5: $399 (antes $450)<br>💻 Laptop Pro 15\" con 10% off.<br>¡Aprovecha!";
 
-            var envio = "[Envios] Envios a todo el pais. Costo calculado al momento de la compra. Envio gratis en compras mayores a $50.";
-
-            var garantia = "[Garantia] 1 ano contra defectos de fabrica en todos los productos.";
-
-            var ofertas = "[Ofertas vigentes] \n- Auriculares Deportivos: $149 (antes $199)\n- Smartwatch Series 5: $399 (antes $450)\n- Laptop Pro 15 con 10% off. Aprovecha!";
-
-            if (lowerMsg.includes("tasa") || lowerMsg.includes("cambio") || lowerMsg.includes("bs") || lowerMsg.includes("dolar")) {
-                respuesta = tasa;
-            } 
+            // Detección de productos (Nintendo Switch 2, PS5, etc.)
+            if (lowerMsg.includes("nintendo switch 2") || lowerMsg.includes("nintendo switch")) {
+                respuesta = "🎮 <strong>Nintendo Switch 2</strong><br>Pantalla mejorada, juegos exclusivos, modo portátil.<br>💰 Precio: $499.";
+            }
+            else if (lowerMsg.includes("ps5") || lowerMsg.includes("playstation 5")) {
+                respuesta = "🎮 <strong>PS5</strong><br>Gráficos nueva generación, SSD ultrarrápido.<br>💰 Precio: $699.";
+            }
             else if (lowerMsg.includes("productos") || lowerMsg.includes("lista") || lowerMsg.includes("disponibles")) {
                 respuesta = listaProductos;
+            }
+            else if (lowerMsg.includes("tasa") || lowerMsg.includes("cambio") || lowerMsg.includes("bs") || lowerMsg.includes("dolar")) {
+                respuesta = tasa;
             }
             else if (lowerMsg.includes("horario") || lowerMsg.includes("atencion")) {
                 respuesta = horario;
             }
-            else if (lowerMsg.includes("contacto") || lowerMsg.includes("telefono") || lowerMsg.includes("correo")) {
+            else if (lowerMsg.includes("contacto") || lowerMsg.includes("telefono") || lowerMsg.includes("correo") || lowerMsg.includes("email")) {
                 respuesta = contacto;
+            }
+            else if (lowerMsg.includes("instagram")) {
+                respuesta = "📷 Instagram de MacDigital: <a href='https://www.instagram.com/macdigital.ve' target='_blank'>@macdigital.ve</a>";
             }
             else if (lowerMsg.includes("pago") || lowerMsg.includes("metodos")) {
                 respuesta = metodosPago;
@@ -199,35 +213,26 @@
                 respuesta = ofertas;
             }
             else if (lowerMsg.includes("precio") || lowerMsg.includes("costo") || lowerMsg.includes("cuanto cuesta")) {
-                if (lowerMsg.includes("laptop")) respuesta = "La Laptop Pro 15 cuesta $1299.";
-                else if (lowerMsg.includes("smartphone") || lowerMsg.includes("celular")) respuesta = "Smartphone X cuesta $899.";
-                else if (lowerMsg.includes("auriculares") && lowerMsg.includes("wireless")) respuesta = "Auriculares Wireless cuestan $249.";
-                else if (lowerMsg.includes("auriculares") && lowerMsg.includes("deportivos")) respuesta = "Auriculares Deportivos cuestan $149.";
-                else if (lowerMsg.includes("smartwatch") || lowerMsg.includes("reloj")) respuesta = "Smartwatch Series 5 cuesta $399.";
-                else if (lowerMsg.includes("nintendo") || lowerMsg.includes("switch")) respuesta = "Nintendo Switch 2 cuesta $499.";
-                else if (lowerMsg.includes("ps5") || lowerMsg.includes("playstation")) respuesta = "PS5 cuesta $699.";
-                else respuesta = "Indicame el producto (laptop, smartphone, auriculares, smartwatch, nintendo, ps5) y te dire su precio.";
+                if (lowerMsg.includes("laptop")) respuesta = "💻 Laptop Pro 15 cuesta $1299.";
+                else if (lowerMsg.includes("smartphone") || lowerMsg.includes("celular")) respuesta = "📱 Smartphone X cuesta $899.";
+                else if (lowerMsg.includes("auriculares wireless")) respuesta = "🎧 Auriculares Wireless cuestan $249.";
+                else if (lowerMsg.includes("auriculares deportivos")) respuesta = "🏃 Auriculares Deportivos cuestan $149.";
+                else if (lowerMsg.includes("smartwatch")) respuesta = "⌚ Smartwatch Series 5 cuesta $399.";
+                else if (lowerMsg.includes("nintendo") || lowerMsg.includes("switch")) respuesta = "🎮 Nintendo Switch 2 cuesta $499.";
+                else if (lowerMsg.includes("ps5") || lowerMsg.includes("playstation")) respuesta = "🎮 PS5 cuesta $699.";
+                else respuesta = "Indícame el producto (laptop, smartphone, auriculares, smartwatch, nintendo, ps5) y te diré su precio.";
             }
             else if (lowerMsg.includes("hola") || lowerMsg.includes("buenas")) {
-                respuesta = "Hola! En que puedo asistirte? Pregunta por productos, ofertas, precios, tasa, horario, etc.";
-            } 
-            else if (lowerMsg.includes("laptop") && !lowerMsg.includes("precio")) {
-                respuesta = "Laptop Pro 15 tiene Intel i7, 16GB RAM, SSD 512GB y pantalla Full HD. Precio: $1299.";
+                respuesta = "¡Hola! 😊 Pregúntame sobre productos, precios, tasa💰, horario🕒, ofertas🔥 o escribe 'catálogo'.";
             }
-            else if (lowerMsg.includes("auricular") && !lowerMsg.includes("precio")) {
-                respuesta = "Tenemos Auriculares Wireless (cancelacion de ruido) por $249 y Deportivos (resistentes al sudor) por $149.";
-            }
-            else if (lowerMsg.includes("smartphone")) {
-                respuesta = "Smartphone X con camara 108MP, 6.5 AMOLED y bateria 5000mAh. Precio: $899.";
-            }
-            else if (lowerMsg.includes("catalogo")) {
-                respuesta = "Puedes ver todos nuestros productos en el catalogo: <a href='catalogo.jsp' style='color:#10c198;'>haz clic aqui</a>.";
+            else if (lowerMsg.includes("catalogo") || lowerMsg.includes("catálogo")) {
+                respuesta = "👉 Puedes ver todos los productos en el <a href='catalogo.jsp' style='color:#10c198;'>catálogo</a>.";
             }
             else if (lowerMsg.includes("gracias")) {
-                respuesta = "De nada! Estamos para ayudarte.";
+                respuesta = "¡De nada! 😊 Estamos para ayudarte. ¿Algo más?";
             }
             else {
-                respuesta = "Lo siento, no te he entendido. Puedes preguntar: productos, ofertas, precio [producto], tasa, contacto, horario. Tambien escribe 'catalogo'.";
+                respuesta = "❓ No te he entendido. Prueba con:<br>• 'productos' (lista completa)<br>• 'precio laptop'<br>• 'tasa'<br>• 'horario'<br>• 'ofertas'<br>• 'contacto'<br>• 'instagram'<br>• 'catálogo'";
             }
             addMessage(respuesta, false);
         }, 500);
