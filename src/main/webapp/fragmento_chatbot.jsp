@@ -10,7 +10,7 @@
         right: 25px;
         width: 55px;
         height: 55px;
-        background: #10c198;
+        background: #0071e3;  /* Cambiado de #10c198 a azul */
         border-radius: 50%;
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -22,6 +22,7 @@
         transition: transform 0.2s;
     }
     .chatbot-btn:hover { transform: scale(1.05); }
+    
     .chatbot-modal {
         position: fixed;
         bottom: 90px;
@@ -35,8 +36,9 @@
         flex-direction: column;
         font-family: 'Inter', sans-serif;
     }
+    
     .chatbot-header {
-        background: #10c198;
+        background: #0071e3;  /* Cambiado de #10c198 a azul */
         color: white;
         padding: 12px 16px;
         border-radius: 18px 18px 0 0;
@@ -45,11 +47,13 @@
         font-weight: 600;
         font-size: 1rem;
     }
+    
     .chatbot-close {
         cursor: pointer;
         font-size: 1.3rem;
         line-height: 1;
     }
+    
     .chatbot-body {
         height: 280px;
         overflow-y: auto;
@@ -59,6 +63,7 @@
         flex-direction: column;
         gap: 8px;
     }
+    
     .bot-msg, .user-msg {
         max-width: 85%;
         padding: 8px 12px;
@@ -66,18 +71,21 @@
         font-size: 0.9rem;
         line-height: 1.4;
     }
+    
     .bot-msg {
-        background: #e6f7f0;
-        color: #1e4620;
+        background: #e6f0ff;  /* Cambiado de #e6f7f0 a azul claro */
+        color: #003d80;        /* Cambiado de #1e4620 a azul oscuro */
         align-self: flex-start;
         border-bottom-left-radius: 4px;
     }
+    
     .user-msg {
-        background: #d9e8ff;
-        color: #004080;
+        background: #d9e8ff;  /* Este ya estaba en azul, se mantiene */
+        color: #004080;        /* Este ya estaba en azul, se mantiene */
         align-self: flex-end;
         border-bottom-right-radius: 4px;
     }
+    
     .chatbot-footer {
         display: flex;
         border-top: 1px solid #e2e8f0;
@@ -85,6 +93,7 @@
         border-radius: 0 0 18px 18px;
         overflow: hidden;
     }
+    
     .chatbot-footer input {
         flex: 1;
         padding: 12px;
@@ -92,8 +101,9 @@
         outline: none;
         font-size: 0.9rem;
     }
+    
     .chatbot-footer button {
-        background: #10c198;
+        background: #0071e3;  /* Cambiado de #10c198 a azul */
         border: none;
         color: white;
         padding: 0 16px;
@@ -101,7 +111,10 @@
         cursor: pointer;
         transition: background 0.2s;
     }
-    .chatbot-footer button:hover { background: #0da881; }
+    
+    .chatbot-footer button:hover { 
+        background: #005bb5;  /* Cambiado de #0da881 a azul más oscuro */
+    }
 </style>
 
 <div class="chatbot-btn" onclick="toggleChat()"></div>
@@ -159,7 +172,7 @@
                 "✅ Earbuds Mini: $89<br>" +
                 "✅ Nintendo Switch 2: $499<br>" +
                 "✅ PS5: $699<br>" +
-                "👉 Visita el <a href='catalogo.jsp' style='color:#10c198;'>catálogo</a> para más detalles.";
+                "👉 Visita el <a href='catalogo.jsp' style='color:#0071e3;'>catálogo</a> para más detalles.";
 
             var tasa = "💰 <strong>Tasa de cambio actual:</strong> 1 USD = 500 Bs (tasa de referencia).";
 
@@ -226,7 +239,7 @@
                 respuesta = "¡Hola! 😊 Pregúntame sobre productos, precios, tasa💰, horario🕒, ofertas🔥 o escribe 'catálogo'.";
             }
             else if (lowerMsg.includes("catalogo") || lowerMsg.includes("catálogo")) {
-                respuesta = "👉 Puedes ver todos los productos en el <a href='catalogo.jsp' style='color:#10c198;'>catálogo</a>.";
+                respuesta = "👉 Puedes ver todos los productos en el <a href='catalogo.jsp' style='color:#0071e3;'>catálogo</a>.";
             }
             else if (lowerMsg.includes("gracias")) {
                 respuesta = "¡De nada! 😊 Estamos para ayudarte. ¿Algo más?";

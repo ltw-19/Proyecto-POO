@@ -13,23 +13,32 @@
     <%@include file="fragmento_chatbot.jsp" %>
     
     <header class="topbar">
-        <a href="${pageContext.request.contextPath}/" class="logo-link">MacDigital</a>
-        <form action="catalogo" method="get" style="flex: 1; max-width: 480px; margin: 0;">
-            <input type="text" name="buscar" class="searchbar" placeholder="Buscar productos..." value="${param.buscar}">
-        </form>
-        <div class="icon-group">
-            <a href="login.jsp" class="login-link">Iniciar sesión / Registro</a>
-            <a href="carrito.jsp" style="position:relative; display:inline-block;">
-                <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
-                <span id="cartCount" class="cart-badge">0</span>
-            </a>
-        </div>
-    </header>
-
-    <section class="banner">
-        <h1 class="banner-title">Compra inteligente con IA</h1>
-        <p class="banner-desc">Encuentra exactamente lo que necesitas. Nuestro asistente de IA filtrará nuestro catálogo por ti.</p>
-        <a href="catalogo" class="btn-main">Explorar productos</a>
+    <a href="${pageContext.request.contextPath}/" class="logo-link" style="display: flex; align-items: center; gap: 12px;">
+        <img src="img/logo/LOGO_CLIENTE.png" alt="MacDigital Logo" style="height: 40px; width: auto;">
+        MacDigital
+    </a>
+    <form action="catalogo" method="get" style="flex: 1; max-width: 480px; margin: 0;">
+        <input type="text" name="buscar" class="searchbar" placeholder="Buscar productos..." value="${param.buscar}">
+    </form>
+    <div class="icon-group">
+        <a href="login.jsp" class="login-link">Iniciar sesión / Registro</a>
+        <a href="carrito.jsp" style="position:relative; display:inline-block;">
+            <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
+            <span id="cartCount" class="cart-badge">0</span>
+        </a>
+    </div>
+</header>
+    
+    <section class="banner" style="background: linear-gradient(135deg, #000000 0%, #000000 30%, #0071e3 60%, #ffffff 100%); position: relative; overflow: hidden;">
+    <h1 class="banner-title" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+        Compra inteligente con IA
+    </h1>
+    <p class="banner-desc" style="color: #e0e0e0;">
+        Encuentra exactamente lo que necesitas. Nuestro asistente de IA filtrará nuestro catálogo por ti.
+    </p>
+    <a href="catalogo" class="btn-main" style="background: #ffffff; color: #0071e3; border: 2px solid #0071e3;">
+        Explorar productos
+    </a>
     </section>
 
     <main class="main-content">
