@@ -206,7 +206,7 @@
             else if (lowerMsg.includes("envio") || lowerMsg.includes("entrega")) {
                 respuesta = envio;
             }
-            else if (lowerMsg.includes("garantia")) {
+            else if (lowerMsg.includes("garantia") || lowerMsg.includes("garantía")) {
                 respuesta = garantia;
             }
             else if (lowerMsg.includes("ofertas") || lowerMsg.includes("promociones")) {

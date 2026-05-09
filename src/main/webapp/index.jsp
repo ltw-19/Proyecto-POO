@@ -18,7 +18,7 @@
             <input type="text" name="buscar" class="searchbar" placeholder="Buscar productos..." value="${param.buscar}">
         </form>
         <div class="icon-group">
-            <span class="login-link">Iniciar sesión / Registro</span>
+            <a href="login.jsp" class="login-link">Iniciar sesión / Registro</a>
             <a href="carrito.jsp" style="position:relative; display:inline-block;">
                 <img src="img/iconos/carrito_compras.png" alt="Carrito" class="icon">
                 <span id="cartCount" class="cart-badge">0</span>
