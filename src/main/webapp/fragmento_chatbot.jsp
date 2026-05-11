@@ -233,7 +233,7 @@
                 else if (lowerMsg.includes("smartwatch")) respuesta = "⌚ Smartwatch Series 5 cuesta $399.";
                 else if (lowerMsg.includes("nintendo") || lowerMsg.includes("switch")) respuesta = "🎮 Nintendo Switch 2 cuesta $499.";
                 else if (lowerMsg.includes("ps5") || lowerMsg.includes("playstation")) respuesta = "🎮 PS5 cuesta $699.";
-                else respuesta = "Indícame el producto (laptop, smartphone, auriculares, smartwatch, nintendo, ps5) y te diré su precio.";
+                else respuesta = "Coloca 'precio de' seguido del producto (laptop, smartphone, auriculares (wireless o deportivos), smartwatch, nintendo, ps5) y te diré su precio.";
             }
             else if (lowerMsg.includes("hola") || lowerMsg.includes("buenas")) {
                 respuesta = "¡Hola! 😊 Pregúntame sobre productos, precios, tasa💰, horario🕒, ofertas🔥 o escribe 'catálogo'.";
